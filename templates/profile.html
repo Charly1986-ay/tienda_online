@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-card">
+
+        <h3>Perfil de Usuario</h3>
+
+        <!-- Foto y datos -->
+        <div class="profile-avatar-section">
+            <img src="{{ user.avatar_url or '/static/img/user_64.png' }}" alt="Foto de usuario" class="profile-avatar">
+            <h5>{{ user.full_name }}</h5>
+            <p class="profile-username">@{{ user.username }}</p>
+        </div>
+
+        <!-- Información del usuario -->
+        <div class="profile-info">
+            <p><strong>Nombre completo:</strong> {{ user.full_name }}</p>
+            <p><strong>Usuario:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+
+        <hr>
+
+        <!-- Botones -->
+        <div class="profile-buttons">
+            <form id="editForm" method="get" action="/users/edit_profile">
+                <button class="btn btn-primary" id="editProfileBtn">Editar Perfil</button>
+            </form>            
+            <form id="deactivateForm" method="post" action="/users/deactivate">
+                <button type="submit" class="btn btn-danger">Dar de baja cuenta</button>
+            </form>
+            <form id="logoutForm" method="post" action="/auth/logout">
+                <button type="submit" class="btn btn-secondary">Cerrar sesión</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', path='/js/profile.js') }}"></script>
+{% endblock %}

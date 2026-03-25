@@ -1,0 +1,49 @@
+                             ┌───────────────────────────┐
+                             │       Cliente / Browser   │
+                             │  (login, profile, etc.)   │
+                             └─────────────┬─────────────┘
+                                           │
+                                           ▼
+                             ┌───────────────────────────┐
+                             │        Endpoints          │
+                             │ (/token, /profile, etc.)  │
+                             │ - Reciben request         │
+                             │ - Llaman service          │
+                             │ - Construyen response     │
+                             └─────────────┬─────────────┘
+                                           │
+                                           ▼
+                  ┌─────────────────────────────────────────────┐
+                  │                Services                     │
+                  │ - Lógica de negocio                         │
+                  │ - Validaciones (email, password, reglas)    │
+                  │ - Hasheo de contraseñas                     │
+                  │ - Generación de JWT token                   │
+                  │ - Devuelven datos puros (user, token, DTO)  │
+                  └─────────────┬─────────────┬─────────────────┘
+                                │             │
+                                ▼             ▼
+                     ┌────────────────┐   ┌────────────────────┐
+                     │      CRUD      │   │ Reglas adicionales │
+                     │ (DB access)    │   │ ejemplo: validación|
+                     │ - get/create/  │   │ de usuario activo, │
+                     │   update user  │   │ permisos, etc.     │
+                     └────────┬───────┘   └────────────────────┘
+                              │
+                              ▼
+                         ┌───────────┐
+                         │   DB      │
+                         │ Usuarios  │
+                         └───────────┘
+
+# Middleware / Dependencias
+┌──────────────────────────────────────────────────────────┐           
+│ Middleware (auth_middleware)                             │
+│ - Lee cookie JWT                                         │
+│ - Llama verify_access_token                              │
+│ - Llena request.state.user_id                            │
+│                                                          │
+│ Dependencias (get_current_user, get_current_user_active) │
+│ - Validan usuario activo                                 │
+│ - Retornan objeto user a endpoint                        │
+└──────────────────────────────────────────────────────────┘

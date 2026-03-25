@@ -1,0 +1,109 @@
+{% extends "base_admin.html" %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Gestión de Usuarios</h3>
+    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUser">
+        Nuevo Usuario
+    </a>
+</div>
+
+<!-- FILTROS -->
+<div class="row mb-3 align-items-center">
+    <!-- Combo/Selector de campo + input de búsqueda -->
+    <div class="col-md-2">
+        <select id="filterField" class="form-control">
+            <option value="">Seleccionar campo</option>
+            <option value="username" {% if filters.field == 'username' %}selected{% endif %}>Usuario</option>
+            <option value="fullname" {% if filters.field == 'fullname' %}selected{% endif %}>Nombre completo</option>
+            <option value="email" {% if filters.field == 'email' %}selected{% endif %}>Email</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <input type="text" id="filterValue" class="form-control" 
+               placeholder="Ingrese valor" 
+               value="{{ filters.value | default('') }}">
+    </div>
+
+    <!-- Radios de rol -->
+    <div class="col-md-3 d-flex align-items-center">
+        <label class="me-2 mb-0">Rol:</label>
+        <div class="form-check form-check-inline mb-0">
+            <input class="form-check-input" type="radio" name="filterRole" id="roleTodos" value=""
+                {% if filters.role is not defined or filters.role == '' %}checked{% endif %}>
+            <label class="form-check-label" for="roleTodos">Todos</label>
+        </div>
+        <div class="form-check form-check-inline mb-0">
+            <input class="form-check-input" type="radio" name="filterRole" id="roleUser" value="1"
+                {% if filters.role == '1' %}checked{% endif %}>
+            <label class="form-check-label" for="roleUser">Invitado</label>
+        </div>
+        <div class="form-check form-check-inline mb-0">
+            <input class="form-check-input" type="radio" name="filterRole" id="roleAdmin" value="2"
+                {% if filters.role == '2' %}checked{% endif %}>
+            <label class="form-check-label" for="roleAdmin">Admin</label>
+        </div>
+    </div>
+
+    <!-- Select de estado -->
+    <div class="col-md-2">
+        <select id="filterEstadoUs" class="form-control">
+            <option value="">Todos</option>
+            <option value="true" {% if filters.disabled == 'true' %}selected{% endif %}>Inactivos</option>
+            <option value="false" {% if filters.disabled == 'false' %}selected{% endif %}>Activos</option>
+        </select>
+    </div>
+
+    <!-- Botón filtrar -->
+    <div class="col-md-1">
+        <button class="btn btn-secondary w-100" onclick="applyFilters()">Filtrar</button>
+    </div>
+
+    <div class="col-md-1">
+        <button class="btn btn-outline-secondary w-100" onclick="resetFilters()">Reset</button>
+    </div>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>               
+                <th>Usuario</th>
+                <th>Nombre completo</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Inactivo</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>                
+                <td>{{ u.username }}</td>
+                <td>{{ u.full_name }}</td>
+                <td>{{ u.email }}</td>    
+                <td>{{ {1: 'Invitado', 2: 'Admin'}[u.role] }}</td>            
+                <td>{{ u.disabled }}</td>
+                <td>
+                    <button class="btn btn-sm btn-black" onclick="viewUser('{{ u.id }}')">
+                        <i class="bi bi-eye"></i> Ver
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include "pagination.html" %}
+{% include "modal_user.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/modal_user.js') }}"></script>
+<script src="{{ url_for('static', path='js/user_search.js') }}"></script>
+{% endblock %}

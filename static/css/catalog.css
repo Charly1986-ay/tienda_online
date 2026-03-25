@@ -1,0 +1,111 @@
+/* ======================
+   LAYOUT SHOP
+====================== */
+.shop-layout {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  gap: 20px;
+  align-items: stretch;       /* catálogo y menú llenan altura */
+  overflow-x: hidden;         /* evita scroll horizontal */
+}
+
+/* CATALOGO */
+.catalog-content {
+  flex: 1 1 auto;           
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-x: hidden;       
+}
+
+/* GRID PRODUCTOS */
+.products {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr); /* Desktop */
+  grid-auto-rows: minmax(320px, auto);
+}
+
+/* PRODUCTO */
+.product {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover del producto */
+.product-link:hover .product {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.16);
+}
+
+.product img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.product h3 {
+  margin: 12px 14px 6px;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.price {
+  margin: 0 14px 12px;
+  font-weight: bold;
+  color: #ff9800;
+  font-size: 1.1rem;
+}
+
+/* Enlace de producto */
+.product-link {
+  display: block;    /* ocupa todo el div */
+  text-decoration: none;  
+  color: inherit;
+}
+
+/* BOTÓN "VER MÁS" */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0 40px;
+}
+
+.load-more {
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: none;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.load-more:hover {
+  background: #333;
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .shop-layout { flex-direction: column; }
+  .catalog-content { padding: 10px 15px; }
+  .products { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+  .catalog-content { padding: 10px; }
+  .products { grid-template-columns: 1fr; }
+}

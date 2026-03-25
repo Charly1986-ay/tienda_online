@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Tienda Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tipografía Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='img/favicon.ico') }}">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/modal_cart.css') }}">        <!-- ✅ modal -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/cart_content.css') }}">  <!-- ✅ contenido carrito -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/autocomplete.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/search.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/hamburger.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/footer.css') }}">
+    
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Header -->
+    {% include 'partials/header.html' %}
+
+    <!-- Contenido -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Modal Carrito -->
+    <div id="modalProducts" class="modal">
+        <div class="modal-container">
+            <span class="close">&times;</span>
+            <h2>Tu carrito</h2>
+
+            <!-- Aquí se agregan los items -->
+            <div id="cartItems"></div>
+
+            <div class="cart-total">
+                <strong>Total: $0</strong>
+            </div>
+            <div class="cart-actions">
+                <button id="emptyCartBtn" class="cart-btn">Vaciar carrito</button>
+                <button id="checkoutBtn" class="cart-btn">Pagar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast alert -->
+    <div id="cartToast" class="cart-toast"></div>
+
+    <!-- Footer -->
+    {% include 'partials/footer.html' %}
+
+    <!-- JS -->
+    <script src="{{ url_for('static', path='js/header.js') }}"></script>        
+    <script src="{{ url_for('static', path='js/cart.js') }}"></script>    <!--Lógica carrito -->    
+    <script src="{{ url_for('static', path='js/categories_nav.js') }}"></script>
+    <script src="{{ url_for('static', path='js/copyright.js') }}"></script>
+    {% block script %}{% endblock %}
+</body>
+</html>

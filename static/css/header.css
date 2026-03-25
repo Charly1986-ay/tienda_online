@@ -1,0 +1,18 @@
+ /* ================= HEADER ================= */
+.header {
+    background: #111;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+.logo { 
+    font-size: 1.6rem; 
+    font-weight: 700; 
+}

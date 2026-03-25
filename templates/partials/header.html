@@ -1,0 +1,29 @@
+<header class="header">
+    <h1 class="logo"><a href="{{ url_for('index_page') }}">🛍️ MiTienda</a></h1>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<nav class="nav" id="menu">
+    <div class="menu-container">
+
+        <!-- Barra de búsqueda con autocompletado -->
+        <form class="search-form" id="searchForm" action="/" method="get" autocomplete="off">
+            <div class="autocomplete-wrapper">
+                <input type="text" id="searchInput" name="name" placeholder="Buscar productos, marcas y más...">
+                <div id="suggestions" class="suggestions-box"></div>
+            </div>
+            <button type="submit" class="search-btn" onclick="submitSearch()">
+                <span style="color:#111; font-size:1.1rem;">🔎</span>
+            </button>
+        </form>
+
+        <a class="nav-btn" href="{{ url_for('account_user') }}">Crear cuenta</a>
+        <a class="nav-btn" href="{{ url_for('login_user') }}">Ingresar</a>
+        <a class="cart-btn" id="cartBtn">🛒 Carrito</a>
+    </div>
+</nav>

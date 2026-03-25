@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/product_detail.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="product-detail-container">
+    <div class="product-detail-image">
+        <img src="{{ product.image }}" alt="{{ product.title }}">
+    </div>
+
+    <div class="product-detail-info">
+        <h2>{{ product.title }}</h2>
+        <p class="description">{{ product.description }}</p>
+        <p class="price">${{ product.price }}</p>
+
+        <!-- Spinner para seleccionar cantidad -->
+        <div class="quantity-selector">
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" value="1" min="1" max="10">
+        </div>
+
+        <button class="add-to-cart-btn">Agregar al carrito</button>
+    </div>
+</div>
+{% endblock %}

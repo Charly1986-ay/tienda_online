@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/catalog.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/menu_vertical.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="shop-layout">
+
+    {% include 'partials/menu_vertical.html' %}
+
+    <div class="catalog-content"> 
+        
+        <h2 class="text-center mb-4">Destacados</h2><br/>
+
+        <!-- Contenedor de los productos -->
+        <main class="products" id="productGrid"
+              data-page="{{ page | default(1) }}"
+              data-total-pages="{{ total_pages | default(1) }}">     
+                
+
+            {% for a in articles %}
+                <a href="/articles/{{ a.id }}" class="product-link">
+                    <div class="product">                
+                        <img src="{{ url_for('static', path='img/' ~ a.image_name) }}" alt="" class="img-item">
+                        <h3>{{ a.name }}</h3>
+                        <p class="price">${{ a.price }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        
+        </main>
+
+        <div class="load-more-container">
+            <button id="loadMoreBtn" class="load-more" onclick="loadMore()">Ver más artículos</button>
+        </div>
+  
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', path='js/index.js') }}"></script>
+{% endblock %}

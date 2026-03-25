@@ -1,0 +1,37 @@
+/* Contenedor del input */
+.autocomplete-wrapper {
+  position: relative;
+  z-index: 10000;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Input de búsqueda */
+#searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Dropdown de sugerencias */
+.suggestions-box {
+    display: none;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 99999; /* sobre todos los elementos */
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.suggestion-item:hover {
+    background: #eaeaea;
+}

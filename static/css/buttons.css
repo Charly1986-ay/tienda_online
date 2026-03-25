@@ -1,0 +1,33 @@
+/* Botones del nav */
+.nav-btn,
+.cart-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+}
+
+/* Estilos específicos */
+.nav-btn {
+    background: white;
+    border: 1px solid #111;
+}
+
+.cart-btn {
+    background: #ff9800;
+    border: none;
+}
+
+/* Hover */
+.nav-btn:hover { background: #333; }
+.cart-btn:hover { background: #e68900; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-btn,
+    .cart-btn { width: 100%; text-align: center; }
+}

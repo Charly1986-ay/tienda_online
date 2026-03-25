@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', path='/css/menu_vertical.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', path='/css/view_product.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Detalle del Producto -->
+<div class="product-detail">
+    <img src="{{ url_for('static', path='img/' ~ product.image_name) }}" alt="{{ product.name }}" class="product-image">
+            
+    <div class="product-info">
+        <h3>{{ product.name }}</h3><br>
+        <p class="price">${{ product.price }}</p><br>
+        <p>{{ product.description }}</p><br>
+
+        <!-- 🔽 AQUÍ VA EL SPINNER -->
+        <div class="quantity-selector">
+            <button type="button" id="decreaseBtn">−</button>
+            
+            <input 
+                type="number" 
+                id="quantity" 
+                value="1" 
+                min="1" 
+                max="{{ product.stock }}"
+                readonly
+            >
+            
+            <button type="button" id="increaseBtn">+</button><br>
+        </div>
+
+        <!-- 🔥 AQUÍ VA LA CAJA DE COMPRA -->
+        <div class="purchase-box">
+
+            <p class="stock-info">
+                {% if product.stock > 0 %}
+                    {{ product.stock }} unidades disponibles
+                {% else %}
+                    Sin stock
+                {% endif %}
+            </p><br>
+
+            <button 
+                type="button"
+                class="add-to-cart-btn"
+                data-id="{{ product.id }}"
+                data-name="{{ product.name }}"
+                data-price="{{ product.price }}"
+                {% if product.stock == 0 %} disabled {% endif %}
+            >
+                Añadir al carrito
+            </button>
+
+        </div>
+    </div>        
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', path='js/product_detail.js') }}"></script>
+{% endblock %}

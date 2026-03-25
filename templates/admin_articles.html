@@ -1,0 +1,83 @@
+{% extends "base_admin.html" %}
+
+{% block title %}Artículos{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Gestión de Artículos</h3>
+    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+        Nuevo artículo
+    </a>
+</div>
+
+<!-- FILTROS -->
+<div class="row mb-3">
+    <div class="col-md-4">
+        <input
+            type="text"
+            id="filterNombre"
+            class="form-control"
+            placeholder="Buscar artículo..."
+            value="{{ filters.name | default('') }}"
+        >
+    </div>
+
+    <div class="col-md-3">
+        <select id="filterCategorie" class="form-control" data-selected="{{ filters.category | default('') }}">
+            <option value="">Todas las categorías</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <select id="filterEstado" class="form-control">
+            <option value="">Todos</option>
+            <option value="true" {% if filters.available == 'true' %}selected{% endif %}>Disponible</option>
+            <option value="false" {% if filters.available == 'false' %}selected{% endif %}>No disponible</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-secondary w-100" onclick="applyFilters()">Filtrar</button>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>                
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Disponibilidad</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.name }}</td>
+                <td>{{ article.category.name }}</td>
+                <td>${{ article.price }}</td>
+                <td>{{ article.stock }}</td>
+                <td>{{ article.available }}</td>
+                <td>
+                    <button class="btn btn-sm btn-black" onclick="viewArticle('{{ article.id }}')">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include "pagination.html" %}
+{% include "modal_article.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/category_combo.js') }}"></script>
+<script src="{{ url_for('static', path='js/modal_article.js') }}"></script>
+<script src="{{ url_for('static', path='js/article_search.js') }}"></script>
+{% endblock %}

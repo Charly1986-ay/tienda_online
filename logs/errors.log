@@ -1,0 +1,2 @@
+2026-03-08 04:18:51,186 - ERROR - EXCEPTION - POST /auth/token - User: None - IP: 127.0.0.1 - The `python-multipart` library must be installed to use form parsing.
+2026-03-08 04:23:41,483 - ERROR - EXCEPTION - POST /auth/token - User: None - IP: 127.0.0.1 - The `python-multipart` library must be installed to use form parsing.

@@ -1,0 +1,71 @@
+<!-- MODAL PRODUCTO -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="articleModalTitle">Agregar / Editar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="formAlert" class="alert alert-warning d-none"></div>
+                <div id="globalAlert" class="alert alert-success d-none"></div>
+                <form id="productForm">                    
+                    <input type="hidden" id="productId" name="productId">
+
+                    <div class="row g-3">
+
+                        <!-- PRIMERA FILA: Nombre, Precio, Cantidad -->
+                        <div class="col-md-4">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" id="productName" name="productName" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Precio</label>
+                            <input type="number" id="productPrice" name="productPrice" class="form-control" min="0" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Cantidad</label>
+                            <input type="number" id="productQty" name="productQty" class="form-control" min="1" required>
+                        </div>
+
+                        <!-- SEGUNDA FILA: Categoría y Estado -->
+                        <div class="col-md-6">
+                            <label class="form-label">Categoría</label>
+                            <select id="productCategory" name="productCategory" class="form-select" required>
+                                <option value="">Seleccione una categoría</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Estado</label>
+                            <select id="productState" class="form-select">
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+
+                        <!-- TERCERA FILA: Imagen y descripción -->
+                        <div class="col-12">
+                            <label class="form-label">Descripción</label>
+                            <textarea id="productDesc" name="productDesc" class="form-control" rows="3" required></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Imagen</label>
+                            <input type="file" id="productImg" name="productImg" class="form-control" accept=".jpg,.jpeg,.png">
+
+                            <div id="imgPreview" class="mt-2">
+                                <!-- La imagen se mostrará aquí -->
+                            </div>
+                        </div>                   
+
+                        <button class="btn btn-primary mt-3 w-100">Guardar Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+/* Items del carrito */
+.cart-item {
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.cart-item .subtotal,
+.cart-item .cantidad {
+    margin: 3px 0;
+}
+
+/* Botón Quitar */
+.cart-item .remove-btn {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.cart-item .remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Separador */
+.cart-item hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+/* Total */
+.cart-total {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Botones acciones */
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.cart-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+#emptyCartBtn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#emptyCartBtn:hover {
+    background-color: #c82333;
+}
+
+#checkoutBtn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+#checkoutBtn:hover {
+    background-color: #218838;
+}
+
+/* ----------------------------- */
+/* Toast alert dentro de la modal */
+/* ----------------------------- */
+.cart-toast {
+    position: absolute;       /* relativo a la modal */
+    top: 10px;
+    right: 10px;
+    background-color: #28a745; /* verde por defecto: éxito */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(-20px); /* animación desde arriba */
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1100; /* encima del modal */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.cart-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Tipos de toast */
+.cart-toast.success {
+    background-color: #28a745; /* verde */
+}
+
+.cart-toast.error {
+    background-color: #dc3545; /* rojo */
+}

@@ -1,0 +1,18 @@
+<!-- PARTIAL PAGINACIÓN REUSABLE -->
+<div class="d-flex justify-content-between align-items-center mt-3">
+
+    <a class="btn btn-outline-secondary btn-sm {% if page <= 1 %}disabled{% endif %}"
+       href="?page={{ page - 1 }}{% for k, v in filters.items() if v %}&{{ k }}={{ v }}{% endfor %}">
+        <i class="bi bi-chevron-left"></i> Anterior
+    </a>
+
+    <span class="text-muted">
+        Página <strong>{{ page }}</strong> de <strong>{{ total_pages }}</strong>
+    </span>
+
+    <a class="btn btn-outline-secondary btn-sm {% if page >= total_pages %}disabled{% endif %}"
+       href="?page={{ page + 1 }}{% for k, v in filters.items() if v %}&{{ k }}={{ v }}{% endfor %}">
+        Siguiente <i class="bi bi-chevron-right"></i>
+    </a>
+
+</div>

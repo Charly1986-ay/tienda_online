@@ -1,0 +1,62 @@
+{% extends "base_admin.html" %}
+
+{% block title %}Categorías{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Gestión de Categorías</h3>
+    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoryViewModal">
+        Nueva categoría
+    </a>
+</div>
+
+<!-- Filtro por categoría -->
+<div class="mb-3 d-flex">
+    <!-- Input del filtro -->
+    <input type="text" id="categoryFilter" class="form-control me-2" placeholder="Filtrar por categoría" value="{{ filters.category }}">
+    
+    <!-- Botón Filtrar (backend) -->
+    <button class="btn btn-secondary me-2" onclick="filterCategories()">Filtrar</button>
+    
+    <!-- Botón Reset -->
+    <button class="btn btn-outline-secondary" onclick="resetFilter()">Reset</button>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Categoría</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="categories-body">
+            {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.name }}</td>
+                <td>
+                    <button class="btn btn-sm btn-black" onclick="viewCategory('{{ categorie.id }}')">
+                        <i class="bi bi-eye"></i> Ver
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if count == 0 %}
+    <p class="text-muted text-center">No hay categorías para mostrar</p>
+{% endif %}
+
+{% include "pagination.html" %}
+{% include "modal_category.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/modal_category.js') }}"></script>
+<script src="{{ url_for('static', path='js/category_search.js') }}"></script>
+{% endblock %}

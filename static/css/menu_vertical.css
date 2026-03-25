@@ -1,0 +1,72 @@
+/* =====================
+   LAYOUT PRINCIPAL
+====================== */
+.shop-layout {
+  display: flex;
+  align-items: flex-start; /* productos y menú alineados arriba */
+  gap: 20px;
+  padding: 16px;
+  min-height: 100vh;       /* ocupa toda la altura de la pantalla */
+}
+
+/* =====================
+  MENU VERTICAL
+====================== */
+.menu-vertical {
+  width: 230px;
+  background: #f0f0f0;
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid #d7d7d7;
+}
+
+/* Encabezados y estilo de títulos */
+.menu-vertical h4 {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Lista de enlaces del menú */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  margin: 8px 0;
+}
+
+.menu-list a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #111;
+  font-size: 0.92rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: background 0.2s, border 0.2s;
+}
+
+.menu-list a:hover {
+  background: #e0e0e0;
+  border: 1px solid #c8c8c8;
+}
+
+/* =====================
+   RESPONSIVE
+====================== */
+@media (max-width: 992px) {
+  .shop-layout {
+    flex-direction: column;  /* menú arriba en tablet/móvil */
+    padding: 10px;
+  }
+
+  .menu-vertical {
+    width: 100%;             /* ocupa todo el ancho */
+  }
+}

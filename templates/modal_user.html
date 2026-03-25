@@ -1,0 +1,63 @@
+<div class="modal fade" id="modalUser" tabindex="-1" aria-labelledby="modalUserLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalUserLabel">Nuevo Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <!-- Mensaje de error general -->
+        <div id="error_general" class="alert alert-danger text-center d-none"></div>
+
+        <form id="formUser">
+          <input type="hidden" id="userId" name="userId">
+
+          <!-- Nombre completo -->
+          <div class="mb-3">
+            <label for="full_name" class="form-label">Nombre completo</label>
+            <input type="text" class="form-control" name="full_name" id="full_name">
+            <small id="error_full_name" class="text-danger"></small>
+          </div>
+
+          <!-- Usuario -->
+          <div class="mb-3">
+            <label for="username" class="form-label">Usuario</label>
+            <input type="text" class="form-control" name="username" id="username" required>
+            <small id="error_username" class="text-danger"></small>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" name="email" id="email" required>
+            <small id="error_email" class="text-danger"></small>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="password" id="password">
+            <small id="error_password" class="text-danger"></small>
+          </div>
+
+          <!-- Repeat password -->
+          <div class="mb-3">
+            <label for="repeat_password" class="form-label">Repetir Contraseña</label>
+            <input type="password" class="form-control" name="repeat_password" id="repeat_password">
+            <small id="error_repeat_password" class="text-danger"></small>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" form="formUser" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

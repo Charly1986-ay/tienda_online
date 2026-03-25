@@ -1,0 +1,56 @@
+<!-- MODAL CATEGORÍA -->
+<div class="modal fade" id="categoryViewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="categoryModalTitle">
+                    Nueva / Editar Categoría
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Mensaje -->
+                <div id="categoryMessage"></div>
+
+                <form id="categoryForm">
+                    <input type="hidden" id="categoryId">
+
+                    <div class="mb-3">
+                        <label for="categoryName" class="form-label">
+                            Nombre de la categoría
+                        </label>
+                        <input type="text"
+                               id="categoryName"
+                               name="name"
+                               class="form-control"
+                               placeholder="Ej: Tecnología"
+                               required>
+			            <div class="invalid-feedback"></div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer con ambos botones a la misma altura -->
+            <div class="modal-footer">
+                 <!-- 🗑 Botón eliminar -->
+                <button type="button"
+                        class="btn btn-danger d-none"
+                        id="deleteCategoryBtn">
+                    Eliminar
+                </button>
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+                <button type="submit"
+                        class="btn btn-primary"
+                        form="categoryForm">
+                    Guardar Categoría
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

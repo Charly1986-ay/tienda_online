@@ -125,7 +125,8 @@ def decrece_stock(db: Session, article_id: int, quantity: int):
 
     if article.stock < quantity:
         raise ProductStockException()
-    
-    data = ArticleUpdate(**article)
-    
+
+    # Solo actualizamos el stock
+    data = ArticleUpdate(stock=article.stock - quantity)
+
     return crud.update_article(db=db, id=article_id, data=data)

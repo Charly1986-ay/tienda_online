@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Session, joinedload
+from sqlalchemy.orm import Session
 from app.schemas.schemas_invoices import OrderCreate
 from app.sql_model import Invoice, Order
 from app.schemas.schemas_invoices import InvoiceCreate
@@ -61,4 +61,4 @@ def create_order(db: Session, data: OrderCreate):
     db.add(db_order)
     db.commit()
     db.refresh(db_order)
-    return db_order
+    #return db_order

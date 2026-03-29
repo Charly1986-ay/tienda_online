@@ -15,7 +15,7 @@ class ArticleCreate(ArticleBase):
     admin_id: int
 
 
-class ArticleUpdate(ArticleBase):
+class ArticleUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     categorie_id: Optional[int] = None

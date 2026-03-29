@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 import datetime
 
 
@@ -21,7 +21,7 @@ class OrderBase(BaseModel):
     subtotal: float
 
 class OrderCreate(OrderBase):
-    pass
+    invoice_id: int
 
 class OrderResponse(OrderBase):
-    invoice: int
+    invoice: int    

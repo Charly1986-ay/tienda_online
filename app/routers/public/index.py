@@ -107,8 +107,10 @@ async def buy(
     user = Depends(get_current_user_active)
 ):    
     data = await request.json()
-    #print(data)
-    services_invoice.create_invoice_service(db=db, data=data)  
+    #print(type(data))
+    services_invoice.create_invoice_service(db=db, data=data, user_id=user.id)  
+
+    return {"message": "Compra realizada correctamente"}
 
 
 @router.get("/get_current_year")

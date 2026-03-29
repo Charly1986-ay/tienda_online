@@ -1,3 +1,24 @@
 .env
+
 tienda.db
 tienda.journal-db
+
+static/img/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+venv/
+.env/
+
+# Archivos de sistema
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Logs
+*.log

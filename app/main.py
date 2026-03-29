@@ -19,7 +19,7 @@ app = FastAPI()
 # Configuración de la App
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.middleware("http")(auth_middleware)
-app.middleware("http")(logging_middleware)
+#app.middleware("http")(logging_middleware)
 app.include_router(main_router)
 
 @app.get("/")

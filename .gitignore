@@ -1,5 +1,7 @@
+# archivo variables de configuración
 .env
 
+# base de datos
 tienda.db
 tienda.journal-db
 
@@ -11,8 +13,8 @@ __pycache__/
 *$py.class
 
 # Entornos virtuales
-venv/
-.env/
+.venv/
+
 
 # Archivos de sistema
 .DS_Store
